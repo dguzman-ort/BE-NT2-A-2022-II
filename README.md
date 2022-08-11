@@ -11,7 +11,13 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 ## Listado de participantes:
 
+<<<<<<< HEAD
 
 
 
+
+=======
+- Daniel Guzman, *dguzman-ort*
+- Nicolas Wainschenker, *nicovejero*
 - Santiago Larraburú, *SantiagoLarra*
+>>>>>>> ae335a1c8860aac90cc172e58df93ddbd4a17770
