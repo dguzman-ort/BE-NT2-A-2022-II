@@ -22,3 +22,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Daniel Guzman, *dguzman-ort*
 - Nicolas Wainschenker, *nicovejero*
 - emiliano pignata, emipignata
+- Rosanny Guzman, *rosa2108*
