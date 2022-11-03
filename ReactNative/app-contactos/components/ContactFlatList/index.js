@@ -1,4 +1,4 @@
-import { FlatList, Text } from 'react-native';
+import { FlatList, Text, TouchableOpacity } from 'react-native';
 import Contact from '../../components/Contact';
 
 export default function ContactFlatList({ contacts }) {
@@ -7,7 +7,12 @@ export default function ContactFlatList({ contacts }) {
 
   const renderContact = ({ item }) => {
     return (
+      <TouchableOpacity
+      onPress={() => console.log("Deberiamos pasar al detail este contacto: ", item)}
+      >
         <Contact contact={item} />
+      </TouchableOpacity>
+        
     )
   }
 

@@ -10,7 +10,7 @@
  */
 
 
- const CANTIDAD_CONTACTOS = 100000
+ const CANTIDAD_CONTACTOS = 5
 
  const nombres = ["Carlos", "Gabriel", "Camila", "Helu", "Santiago"]
  const apellidos = ["Landa", "Fiorito", "Pignata", "Romero", "Guzman"]
@@ -46,11 +46,20 @@
 
 
  const getContacts = () => {
+
+  // Ejemplo con FETCH
+
+  // return fetch("https://localhost:3000/api/contacts")
+
   return new Promise((resolve, reject) => {
     return resolve(contactos)
   })
  }
 
+ const addContact = (contact) => {
+  
+ }
+ 
  export default {
     getContacts
  }
