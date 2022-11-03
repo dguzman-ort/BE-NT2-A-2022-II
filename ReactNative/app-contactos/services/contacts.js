@@ -57,9 +57,13 @@
  }
 
  const addContact = (contact) => {
-  
+  return new Promise((resolve, reject) => {
+    contactos.push(contact)
+    return resolve({...contact, status: 'added'})
+  })
  }
  
  export default {
-    getContacts
+    getContacts,
+    addContact
  }

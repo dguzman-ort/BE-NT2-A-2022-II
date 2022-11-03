@@ -3,12 +3,13 @@ import { Button, SafeAreaView, Text, TextInput, View } from "react-native"
 import { Input } from '@rneui/themed';
 import HomeContext from "../../services/HomeContext";
 
-export default () => {
+import contactService from "../../services/contacts";
+
+
+export default ({navigation}) => {
 
     const [contact, setContact] = useState({})
     const [notValid, setNotValid] = useState(true)
-
-    const { addContact } = useContext(HomeContext)
 
     useEffect(useCallback(() => {
         const isValid = (
@@ -22,14 +23,19 @@ export default () => {
 
     const saveContact = () => {
         console.log("Click en boton guardar contacto");
+
         // TODO: Limpiar campos
-        addContact(contact)
+        // addContact(contact)
+
+        console.log(contactService);
+
+        contactService.addContact(contact).then(res => {
+            console.log(res);
+            navigation.goBack()
+        })
     }
     return (
         <SafeAreaView>
-            <View>
-                <Text>Contact Form</Text>
-            </View>
             <View>
                 <Input
                     placeholder="Nombre"
@@ -52,12 +58,18 @@ export default () => {
                     keyboardType='phone-pad'
                 />
             </View>
-
-            <Button
-            title="Save Contact"
-            onPress={saveContact}
-            disabled={notValid}
-             />
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <Button
+                    title="Save"
+                    onPress={saveContact}
+                    disabled={notValid}
+                />
+                <Button
+                    title="Cancel"
+                    onPress={() => navigation.goBack() }
+                />
+            </View>
+            
         </SafeAreaView>
 
     )

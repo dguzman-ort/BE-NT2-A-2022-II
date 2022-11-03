@@ -12,16 +12,18 @@ import HomeContext, { contacts } from '../../services/HomeContext';
 
 
 
-export default function Home() {
+export default function Home({navigation}) {
 
     const [contacts, setContacts] = useState(contacts)
     const [showForm, setShowForm] = useState(false)
 
-    const addContact = (item) => {
-        console.log("Tenemos que agregar contacto", item);
-        setContacts([...contacts, item])
-        setShowForm(false)
-    }
+    // console.log(navigation);
+
+    // const addContact = (item) => {
+    //     console.log("Tenemos que agregar contacto", item);
+    //     setContacts([...contacts, item])
+    //     setShowForm(false)
+    // }
     
     useEffect(() => {
         // Se supone que acá tengo que ir a buscar la informacion en la API
@@ -34,26 +36,24 @@ export default function Home() {
 
     return (
 
-        <HomeContext.Provider value={ { addContact }}>
+        // <HomeContext.Provider value={ { addContact }}>
             <View style={styles.container}>
                 <Button
                     title={(showForm) ? 'Back to List' : 'Add new Contact'}
-                    onPress={() => setShowForm(prev => !prev)}
+                    onPress={() => navigation.navigate("Details")}
                 />
                 {
-                    (showForm) ?
-                        <Details />
-                        :
-                        <View>
-                            {/* <ContactScrollView contacts={contacts} /> */}
-                            <ContactFlatList contacts={contacts} />
+                   
+                    <View>
+                        
+                        <ContactFlatList contacts={contacts} navigation={navigation} />
 
-                        </View>
+                    </View>
                 }
 
                 <StatusBar style="auto" />
             </View>
-        </HomeContext.Provider>
+        // </HomeContext.Provider>
 
 
     );
