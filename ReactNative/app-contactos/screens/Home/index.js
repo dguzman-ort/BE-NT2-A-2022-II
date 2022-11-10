@@ -3,7 +3,8 @@ import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import styles from "./styles";
 
-import contactService from "../../services/contacts";
+// import contactService from "../../services/contacts";
+import vehiculoService from "../../services/vehiculos";
 import ContactScrollView from '../../components/ContactScrollView';
 import { useEffect, useState } from 'react';
 import ContactFlatList from '../../components/ContactFlatList';
@@ -28,9 +29,13 @@ export default function Home({navigation}) {
     useEffect(() => {
         // Se supone que acá tengo que ir a buscar la informacion en la API
         // fetch contactos
-        contactService.getContacts().then(data => {
+        vehiculoService.getVehiculos().then(data => {
+            console.log("Vehiculos", data);
             setContacts(data)
         })
+        // contactService.getContacts().then(data => {
+        //     setContacts(data)
+        // })
 
     }, [])
 

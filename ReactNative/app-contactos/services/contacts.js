@@ -48,8 +48,14 @@
  const getContacts = () => {
 
   // Ejemplo con FETCH
-
-  // return fetch("https://localhost:3000/api/contacts")
+  // return new Promise((resolve, reject) => {
+  //   fetch("https://localhost:3000/api/contacts")
+  //   .then(res => res.blob())
+  //   .then(data => {
+  //     return resolve(data)
+  //   })  
+  // })
+  
 
   return new Promise((resolve, reject) => {
     return resolve(contactos)

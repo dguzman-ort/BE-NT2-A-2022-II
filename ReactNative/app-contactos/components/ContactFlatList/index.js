@@ -1,5 +1,6 @@
 import { FlatList, Text, TouchableOpacity } from 'react-native';
 import Contact from '../../components/Contact';
+import Vehiculo from '../Vehiculo';
 
 export default function ContactFlatList({ contacts, navigation }) {
 
@@ -8,9 +9,10 @@ export default function ContactFlatList({ contacts, navigation }) {
   const renderContact = ({ item }) => {
     return (
       <TouchableOpacity
-      onPress={() => navigation.navigate('Details', { contact: item})}
+      onPress={() => navigation.navigate('Details', { id: item.id})}
       >
-        <Contact contact={item} />
+        {/* <Contact contact={item} /> */}
+        <Vehiculo vehiculo={item} showAll={false} />
       </TouchableOpacity>
         
     )
