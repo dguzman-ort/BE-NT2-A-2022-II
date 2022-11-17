@@ -1,7 +1,8 @@
-import { Button, SafeAreaView, View, StyleSheet } from "react-native"
+import { Button, SafeAreaView, View, StyleSheet, TouchableOpacity, Image } from "react-native"
 import * as Google from 'expo-auth-session/providers/google';
-import { useEffect } from "react";
-
+import { useContext, useEffect } from "react";
+import AuthService from "../../services/login";
+import AuthContext from "../../services/AuthContext";
 
 
 const Login = () => {
@@ -10,35 +11,51 @@ const Login = () => {
         expoClientId: '479655700428-c3envph2jpd4o2of7ev156vlgvn6dqv1.apps.googleusercontent.com'
     });
 
+    const { setAuthenticationData } = useContext(AuthContext)
+
     useEffect(() => {
         if (response?.type === 'success') {
             const { authentication } = response;
-            console.log("authentication", authentication);
+            //console.log("authentication", authentication);
 
-            //TODO: Esto se hace a nivel de backend. 
-            fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${authentication.accessToken}`)
-            .then(res => res.json())
-            .then(data => console.log(data))
+            AuthService.login(authentication.accessToken).then(data => {
+                console.log("Vamos a guardar data del usuario", data);
+                setAuthenticationData(data)
+            })
+
+
         }
     }, [response]);
 
 
     return (
-        <SafeAreaView>
-            <View>
-                <Button
+        <SafeAreaView style={styles.container}>
+            <TouchableOpacity
+                onPress={() => {
+                    promptAsync()
+                }}
+            >
+                <View >
+                    {/* <Image
+                        source={{uri: ''}}
+                     /> */}
+                     <Image source={require('../../assets/btn_google_signin_light_normal_web.png')} />
+                     
+                </View>
+            </TouchableOpacity>
+            {/* <Button
                     title="Login con Google"
                     onPress={() => {
                         promptAsync()
                     }}
-                />
-            </View>
+                /> */}
         </SafeAreaView>
 
     )
 
 
 }
+
 
 const styles = StyleSheet.create({
     container: {

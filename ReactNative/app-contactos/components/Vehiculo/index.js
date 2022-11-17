@@ -12,13 +12,13 @@ const Vehiculo = ({ vehiculo, showAll }) => {
                 <Text h1>
                     MARCA: {vehiculo.marca}
                 </Text>
+                <Text h2>
+                    MODELO: {vehiculo.modelo}
+                </Text>
 
                 {
                     showAll ?
                     <>
-                        <Text h2>
-                        MODELO: {vehiculo.modelo}
-                        </Text>
                         <Text h3>
                             VERSION: {vehiculo.version}
                         </Text>
